@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="nav">
+  <a href="/?day={{ prev_day }}">&larr; Previous week</a>
+  <h2>{{ title }}</h2>
+  <a href="/?day={{ next_day }}">Next week &rarr;</a>
+</div>
+
+{% if open_count %}
+  <p class="warn">{{ open_count }} open shift(s) this week</p>
+{% endif %}
+
+<h3>Shifts</h3>
+{% if shifts %}
+<table>
+  <tr><th>Day</th><th>Time</th><th>Hours</th><th>Server</th><th>Type</th><th>Notes</th></tr>
+  {% for s in shifts %}
+  <tr {% if s.server is none %}class="open"{% endif %}>
+    <td>{{ s.day }}</td>
+    <td>{{ s.time }}</td>
+    <td>{{ s.hours }}</td>
+    <td>{{ s.server or "OPEN" }}</td>
+    <td>{{ s.type }}</td>
+    <td>{{ s.notes }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+  <p>No shifts this week yet.</p>
+{% endif %}
+
+<h3>Hours this week</h3>
+{% if hours %}
+<table>
+  <tr><th>Server</th><th>Hours</th></tr>
+  {% for h in hours %}
+  <tr><td>{{ h.name }}</td><td>{{ h.hours }}</td></tr>
+  {% endfor %}
+</table>
+{% else %}
+  <p>No active employees yet.</p>
+{% endif %}
+{% endblock %}

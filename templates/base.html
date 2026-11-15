@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Restaurant Scheduler</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 2rem; }
+    th, td { text-align: left; padding: 0.5rem; border-bottom: 1px solid #ddd; }
+    tr.open td { background: #fff3cd; font-weight: 600; }
+    .nav { display: flex; gap: 1rem; align-items: center; }
+    .warn { background: #fff3cd; padding: 0.5rem 1rem; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Restaurant Scheduler</h1>
+  {% block content %}{% endblock %}
+</body>
+</html>
